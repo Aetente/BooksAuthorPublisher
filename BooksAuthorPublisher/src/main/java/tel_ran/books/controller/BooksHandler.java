@@ -21,44 +21,47 @@ public class BooksHandler {
 	@Autowired
 	IBooks books;
 	
-	@CrossOrigin
+	
 	@PostMapping(IBookConstants.BOOK)
+	@CrossOrigin
 	public boolean addBook(@RequestBody Book book) {
 		return books.addBook(book);
 	}
 
-	@CrossOrigin
+	
 	@GetMapping({IBookConstants.BOOK+"/{isbn}"})
+	@CrossOrigin
 	public Book getBook(@PathVariable long isbn) {
 		return books.getBookByISBN(isbn);
 	}
 	
-	@CrossOrigin
 	@GetMapping({IBookConstants.AUTHOR+"/{authorName}"})
+	@CrossOrigin
 	public Iterable<Book> getBooksByAuthor(@PathVariable String authorName){
 		return books.getBooksByAuthor(authorName);
 	}
 	
-	@CrossOrigin
+	
 	@GetMapping({IBookConstants.PUBLISHER+"/{publisherName}"})
+	@CrossOrigin
 	public Iterable<Book> getBooksByPublisher(@PathVariable String publisherName) {
 		return books.getBooksByPublisher(publisherName);
 	}
 	
-	@CrossOrigin
 	@DeleteMapping({IBookConstants.BOOK+"/{isbn}"})
+	@CrossOrigin
 	public boolean removeBook(@PathVariable long isbn) {
 		return books.removeBook(isbn);
 	}
 	
-	@CrossOrigin
 	@GetMapping({IBookConstants.AUTHORS+"/{isbn}"})
+	@CrossOrigin
 	public Iterable<Author> getBookAuthors(@PathVariable long isbn) {
 		return books.getBookAuthors(isbn);
 	}
 	
-	@CrossOrigin
 	@GetMapping({IBookConstants.PUBLISHERS+"/{authorName}"})
+	@CrossOrigin
 	public Iterable<Publisher> getPublishersByAuthor(@PathVariable String authorName) {
 		return books.getPublishersByAuthor(authorName);
 	}
